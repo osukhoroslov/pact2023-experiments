@@ -1,0 +1,14 @@
+dags:
+  - dag.yaml
+dag_parser:
+  reference_speed: 10
+  ignore_memory: false
+systems:
+  - system.yaml
+data_transfer_mode: Direct
+schedulers:
+  - DLS
+  - HEFT
+  - Lookahead
+  - PEFT
+#traces_dir: traces

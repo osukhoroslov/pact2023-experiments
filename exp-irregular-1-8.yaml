@@ -1,0 +1,131 @@
+dags:
+  - dags/wfinstances
+dag_parser:
+  reference_speed: 10
+  generate_cores:
+    min: 1
+    max: 8
+    regular: false
+  generate_memory:
+    min: 2000
+    max: 16000
+    regular: false
+  seed: 123
+systems:
+  - systems/cluster-het-4-64.yaml
+  - systems/cluster-het-8-128.yaml
+  - systems/cluster-hom-4-32.yaml
+  - systems/cluster-hom-8-64.yaml
+data_transfer_mode: Direct
+schedulers:
+  - DLS
+  - HEFT
+  - Lookahead
+  - PEFT
+
+  - DynamicList[task=CompSize,resource=Speed]
+  - DynamicList[task=CompSize,resource=TaskData]
+  - DynamicList[task=CompSize,resource=MaxAvailableCores]
+  - DynamicList[task=CompSize,resource=MaxAvailableMemory]
+  - DynamicList[task=CompSize,resource=MinAvailableCores]
+  - DynamicList[task=CompSize,resource=MinAvailableMemory]
+  - DynamicList[task=CompSize,resource=DotProduct]
+  - DynamicList[task=CompSize,resource=DotProductSpeed]
+
+  - DynamicList[task=DataSize,resource=Speed]
+  - DynamicList[task=DataSize,resource=TaskData]
+  - DynamicList[task=DataSize,resource=MaxAvailableCores]
+  - DynamicList[task=DataSize,resource=MaxAvailableMemory]
+  - DynamicList[task=DataSize,resource=MinAvailableCores]
+  - DynamicList[task=DataSize,resource=MinAvailableMemory]
+  - DynamicList[task=DataSize,resource=DotProduct]
+  - DynamicList[task=DataSize,resource=DotProductSpeed]
+
+  - DynamicList[task=ChildrenCount,resource=Speed]
+  - DynamicList[task=ChildrenCount,resource=TaskData]
+  - DynamicList[task=ChildrenCount,resource=MaxAvailableCores]
+  - DynamicList[task=ChildrenCount,resource=MaxAvailableMemory]
+  - DynamicList[task=ChildrenCount,resource=MinAvailableCores]
+  - DynamicList[task=ChildrenCount,resource=MinAvailableMemory]
+  - DynamicList[task=ChildrenCount,resource=DotProduct]
+  - DynamicList[task=ChildrenCount,resource=DotProductSpeed]
+
+  - DynamicList[task=BottomLevel,resource=Speed]
+  - DynamicList[task=BottomLevel,resource=TaskData]
+  - DynamicList[task=BottomLevel,resource=MaxAvailableCores]
+  - DynamicList[task=BottomLevel,resource=MaxAvailableMemory]
+  - DynamicList[task=BottomLevel,resource=MinAvailableCores]
+  - DynamicList[task=BottomLevel,resource=MinAvailableMemory]
+  - DynamicList[task=BottomLevel,resource=DotProduct]
+  - DynamicList[task=BottomLevel,resource=DotProductSpeed]
+
+  - DynamicList[task=Cores,resource=Speed]
+  - DynamicList[task=Cores,resource=TaskData]
+  - DynamicList[task=Cores,resource=MaxAvailableCores]
+  - DynamicList[task=Cores,resource=MaxAvailableMemory]
+  - DynamicList[task=Cores,resource=MinAvailableCores]
+  - DynamicList[task=Cores,resource=MinAvailableMemory]
+  - DynamicList[task=Cores,resource=DotProduct]
+  - DynamicList[task=Cores,resource=DotProductSpeed]
+
+  - DynamicList[task=Memory,resource=Speed]
+  - DynamicList[task=Memory,resource=TaskData]
+  - DynamicList[task=Memory,resource=MaxAvailableCores]
+  - DynamicList[task=Memory,resource=MaxAvailableMemory]
+  - DynamicList[task=Memory,resource=MinAvailableCores]
+  - DynamicList[task=Memory,resource=MinAvailableMemory]
+  - DynamicList[task=Memory,resource=DotProduct]
+  - DynamicList[task=Memory,resource=DotProductSpeed]
+
+  - DynamicList[task=CoresMemorySum,resource=Speed]
+  - DynamicList[task=CoresMemorySum,resource=TaskData]
+  - DynamicList[task=CoresMemorySum,resource=MaxAvailableCores]
+  - DynamicList[task=CoresMemorySum,resource=MaxAvailableMemory]
+  - DynamicList[task=CoresMemorySum,resource=MinAvailableCores]
+  - DynamicList[task=CoresMemorySum,resource=MinAvailableMemory]
+  - DynamicList[task=CoresMemorySum,resource=DotProduct]
+  - DynamicList[task=CoresMemorySum,resource=DotProductSpeed]
+
+  - DynamicList[task=CoresMemoryMult,resource=Speed]
+  - DynamicList[task=CoresMemoryMult,resource=TaskData]
+  - DynamicList[task=CoresMemoryMult,resource=MaxAvailableCores]
+  - DynamicList[task=CoresMemoryMult,resource=MaxAvailableMemory]
+  - DynamicList[task=CoresMemoryMult,resource=MinAvailableCores]
+  - DynamicList[task=CoresMemoryMult,resource=MinAvailableMemory]
+  - DynamicList[task=CoresMemoryMult,resource=DotProduct]
+  - DynamicList[task=CoresMemoryMult,resource=DotProductSpeed]
+
+  - DynamicList[task=CoresFlops,resource=Speed]
+  - DynamicList[task=CoresFlops,resource=TaskData]
+  - DynamicList[task=CoresFlops,resource=MaxAvailableCores]
+  - DynamicList[task=CoresFlops,resource=MaxAvailableMemory]
+  - DynamicList[task=CoresFlops,resource=MinAvailableCores]
+  - DynamicList[task=CoresFlops,resource=MinAvailableMemory]
+  - DynamicList[task=CoresFlops,resource=DotProduct]
+  - DynamicList[task=CoresFlops,resource=DotProductSpeed]
+
+  - DynamicList[task=MemoryFlops,resource=Speed]
+  - DynamicList[task=MemoryFlops,resource=TaskData]
+  - DynamicList[task=MemoryFlops,resource=MaxAvailableCores]
+  - DynamicList[task=MemoryFlops,resource=MaxAvailableMemory]
+  - DynamicList[task=MemoryFlops,resource=MinAvailableCores]
+  - DynamicList[task=MemoryFlops,resource=MinAvailableMemory]
+  - DynamicList[task=MemoryFlops,resource=DotProduct]
+  - DynamicList[task=MemoryFlops,resource=DotProductSpeed]
+
+  - DynamicList[task=CoresMemoryFlops,resource=Speed]
+  - DynamicList[task=CoresMemoryFlops,resource=TaskData]
+  - DynamicList[task=CoresMemoryFlops,resource=MaxAvailableCores]
+  - DynamicList[task=CoresMemoryFlops,resource=MaxAvailableMemory]
+  - DynamicList[task=CoresMemoryFlops,resource=MinAvailableCores]
+  - DynamicList[task=CoresMemoryFlops,resource=MinAvailableMemory]
+  - DynamicList[task=CoresMemoryFlops,resource=DotProduct]
+  - DynamicList[task=CoresMemoryFlops,resource=DotProductSpeed]
+
+  - DynamicList[task=RankPack0,resource=Speed]
+  - DynamicList[task=RankPack025,resource=Speed]
+  - DynamicList[task=RankPack05,resource=Speed]
+  - DynamicList[task=RankPack075,resource=Speed]
+  - DynamicList[task=RankPack1,resource=Speed]
+  - DynamicList[task=RankPackMult,resource=Speed]
+  - DynamicList[task=RankPackSel,resource=Speed]

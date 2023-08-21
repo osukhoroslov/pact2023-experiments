@@ -19,7 +19,7 @@ For simulation purposes we use [DSLab DAG](https://github.com/osukhoroslov/dslab
 ```
 $ git clone https://github.com/osukhoroslov/dslab.git
 $ cd dslab
-$ git checkout cb5d9ad386c1cd9a32a844404964a2f7fce8eba4
+$ git checkout dbcafe123ebec71c7641a804239a77e1671b3045
 ```
 
 To run DSLab DAG you will also need to [install Rust](https://www.rust-lang.org/tools/install). 
